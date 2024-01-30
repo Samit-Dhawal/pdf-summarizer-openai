@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Question Answering</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #007acc;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        input[type="file"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            background-color: #007acc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #005d99;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        /* CSS styles for the answer section */
+        .answer-section {
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            align-items: center;
+        }
+
+        .answer-section h2 {
+            font-size: 20px;
+            color: #007acc;
+        }
+
+        .answer-section p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PDF Question Answering</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="pdf" accept=".pdf" required><br>
+        <input type="text" name="question" placeholder="Ask a question" required><br>
+        <button type="submit">Get Answer</button>
+    </form>
+    <div class="answer-section">
+        {% if answer %}
+            <h2>Answer:</h2>
+            <p>{{ answer }}</p>
+        {% endif %}
+        {% if text %}
+        <h2>Extracted Text from PDF:</h2>
+        <h5>{{ text }}</h5>
+        {% endif %}
+    </div>
+</body>
+</html>
